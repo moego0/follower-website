@@ -1,0 +1,231 @@
+[
+  {
+    "emoji": "🛺",
+    "serviceName": "متابعين تيك توك",
+    "description": "خدمة سريعة",
+    "quantity": "1",
+    "quantityUnit": "ألف",
+    "speed": "يوم",
+    "guarantee": "ضمان شهر",
+    "price": "100",
+    "currency": "جنيه",
+    "platform": "TikTok"
+  },
+  {
+    "emoji": "🛺",
+    "serviceName": "متابعين تيك توك",
+    "description": "ننصح بها",
+    "quantity": "50",
+    "quantityUnit": "ألف",
+    "speed": "يوم",
+    "guarantee": "ضمان شهر",
+    "price": "160",
+    "currency": "جنيه",
+    "platform": "TikTok",
+    "note": "عند عمل الطلب يجب أن تقوم بفتح بث مباشر حتى إكتمال الطلب"
+  },
+  {
+    "emoji": "🛺",
+    "serviceName": "مشاهدات تيك توك",
+    "description": "بداية فورية",
+    "quantity": "1",
+    "quantityUnit": "مليون",
+    "speed": "يوم",
+    "guarantee": "ضمان شهرين",
+    "price": "20",
+    "currency": "جنيه",
+    "platform": "TikTok"
+  },
+  {
+    "emoji": "🛺",
+    "serviceName": "إعجابات تيك توك",
+    "description": "جودة حقيقية",
+    "quantity": "30",
+    "quantityUnit": "ألف",
+    "speed": "يوم",
+    "guarantee": "مدي الحياة",
+    "price": "30",
+    "currency": "جنيه",
+    "platform": "TikTok"
+  },
+  {
+    "emoji": "👸",
+    "serviceName": "متابعين إنستغرام",
+    "description": "اكونتات مصرين",
+    "quantity": "1",
+    "quantityUnit": "ألف",
+    "speed": "يوم",
+    "guarantee": "ضمان شهر",
+    "price": "200",
+    "currency": "جنيه",
+    "platform": "Instagram"
+  },
+  {
+    "emoji": "👸",
+    "serviceName": "متابعين إنستغرام",
+    "description": "اكونتات ذكور مصرين",
+    "quantity": "5",
+    "quantityUnit": "ألف",
+    "speed": "يوم",
+    "guarantee": "ضمان شهر",
+    "price": "350",
+    "currency": "جنيه",
+    "platform": "Instagram"
+  },
+  {
+    "emoji": "👸",
+    "serviceName": "متابعين إنستغرام",
+    "description": "اكونتات اناث مصرين",
+    "quantity": "5",
+    "quantityUnit": "ألف",
+    "speed": "يوم",
+    "guarantee": "ضمان شهر",
+    "price": "350",
+    "currency": "جنيه",
+    "platform": "Instagram"
+  },
+  {
+    "emoji": "👸",
+    "serviceName": "إعجابات إنستغرام",
+    "description": "اكونتات مصرين",
+    "quantity": "1",
+    "quantityUnit": "ألف",
+    "speed": "يوم",
+    "guarantee": "ضمان شهر",
+    "price": "40",
+    "currency": "جنيه",
+    "platform": "Instagram"
+  },
+  {
+    "emoji": "👸",
+    "serviceName": "مشاهدات استوري إنستغرام",
+    "description": "اكونتات مصرين",
+    "quantity": "10",
+    "quantityUnit": "ألف",
+    "speed": "يوم",
+    "guarantee": "ضمان شهر",
+    "price": "50",
+    "currency": "جنيه",
+    "platform": "Instagram"
+  },
+  {
+    "emoji": "🤴",
+    "serviceName": "تحقيق شرط متابعين فيسبوك",
+    "description": "سوف تحصل على 10 ألف متابع",
+    "quantity": "10",
+    "quantityUnit": "ألف",
+    "speed": "",
+    "guarantee": "مدي الحياة",
+    "price": "1100",
+    "currency": "جنيه",
+    "platform": "Facebook"
+  },
+  {
+    "emoji": "🤴",
+    "serviceName": "تحقيق شرط متابعين فيسبوك",
+    "description": "سوف تحصل على 5 ألف متابع",
+    "quantity": "5",
+    "quantityUnit": "ألف",
+    "speed": "",
+    "guarantee": "مدي الحياة",
+    "price": "600",
+    "currency": "جنيه",
+    "platform": "Facebook"
+  },
+  {
+    "emoji": "🤴",
+    "serviceName": "متابعين + إعجابات صفحة فيسبوك",
+    "description": "تقبل جميع الاشكال",
+    "quantity": "1",
+    "quantityUnit": "ألف",
+    "speed": "يوم",
+    "guarantee": "ضمان شهر",
+    "price": "120",
+    "currency": "جنيه",
+    "platform": "Facebook"
+  },
+  {
+    "emoji": "🤴",
+    "serviceName": "متابعين فيسبوك بروفايل",
+    "description": "80-100% مصرين",
+    "quantity": "5",
+    "quantityUnit": "ألف",
+    "speed": "يوم",
+    "guarantee": "ضمان شهر",
+    "price": "150",
+    "currency": "جنيه",
+    "platform": "Facebook"
+  },
+  {
+    "emoji": "🤴",
+    "serviceName": "أعضاء جروب فيسبوك",
+    "description": "عام وخاص | مصرين 70-100%",
+    "quantity": "1",
+    "quantityUnit": "ألف",
+    "speed": "يوم",
+    "guarantee": "ضمان شهر",
+    "price": "200",
+    "currency": "جنيه",
+    "platform": "Facebook"
+  },
+  {
+    "emoji": "🤴",
+    "serviceName": "إعجابات فيسبوك",
+    "description": "مكس ❤️👍🥰 | 100% مصرية",
+    "quantity": "10",
+    "quantityUnit": "ألف",
+    "speed": "يوم",
+    "guarantee": "مدي الحياة",
+    "price": "200",
+    "currency": "جنيه",
+    "platform": "Facebook"
+  },
+  {
+    "emoji": "💌",
+    "serviceName": "أعضاء تليجرام",
+    "description": "قناة / مجموعة",
+    "quantity": "2",
+    "quantityUnit": "ألف",
+    "speed": "يوم",
+    "guarantee": "ضمان شهر",
+    "price": "70",
+    "currency": "جنيه",
+    "platform": "Telegram"
+  },
+  {
+    "emoji": "🧸",
+    "serviceName": "مشتركين يوتيوب",
+    "description": "جوده عالية",
+    "quantity": "1",
+    "quantityUnit": "ألف",
+    "speed": "يوم",
+    "guarantee": "ضمان 30 يوم",
+    "price": "700",
+    "currency": "جنيه",
+    "platform": "YouTube"
+  },
+  {
+    "emoji": "🧸",
+    "serviceName": "مشتركين يوتيوب",
+    "description": "جودة منخفضة",
+    "quantity": "50",
+    "quantityUnit": "ألف",
+    "speed": "يوم",
+    "guarantee": "بدون ضمان",
+    "price": "100",
+    "currency": "جنيه",
+    "platform": "YouTube"
+  },
+  {
+    "emoji": "🤖",
+    "serviceName": "مشاهدات يوتيوب",
+    "description": "أكثر استقرارا",
+    "quantity": "5",
+    "quantityUnit": "ألف",
+    "speed": "يوم",
+    "guarantee": "مدى الحياة",
+    "price": "100",
+    "currency": "جنيه",
+    "platform": "YouTube"
+  }
+]
