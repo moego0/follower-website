@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>خدمات المتابعين | Follower Services</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header styles */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .language-toggle {
+            display: flex;
+            gap: 10px;
+        }
+
+        .lang-btn {
+            padding: 10px 20px;
+            border: 2px solid #667eea;
+            background: transparent;
+            color: #667eea;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .lang-btn:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .lang-btn.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .header-whatsapp-btn {
+            padding: 10px 20px;
+            border: 2px solid #25d366;
+            background: #25d366;
+            color: white;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .header-whatsapp-btn:hover {
+            background: #128c7e;
+            border-color: #128c7e;
+            transform: translateY(-2px);
+            color: white;
+        }
+
+        .contact-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: #25d366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            border: none;
+            color: white;
+            font-size: 24px;
+        }
+
+        .contact-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.4);
+        }
+
+        .contact-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* RTL support for contact button */
+        [dir="rtl"] .contact-btn {
+            right: auto;
+            left: 30px;
+        }
+
+        /* Main content */
+        main {
+            padding: 3rem 0;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        /* Service card styles */
+        .service-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .platform-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1rem auto;
+            display: block;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .platform-icon:hover {
+            transform: scale(1.1);
+        }
+
+        .sort-controls {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem;
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .sort-controls h3 {
+            margin-bottom: 1rem;
+            color: #2c3e50;
+            text-align: center;
+        }
+
+        .sort-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .sort-btn {
+            padding: 8px 16px;
+            border: 2px solid #667eea;
+            background: transparent;
+            color: #667eea;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .sort-btn:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .sort-btn.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .platform-filter {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .platform-filter-btn {
+            padding: 6px 12px;
+            border: 1px solid #ddd;
+            background: white;
+            color: #666;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .platform-filter-btn:hover {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .platform-filter-btn.active {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .service-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+            text-align: center;
+        }
+
+        .service-description {
+            color: #7f8c8d;
+            margin-bottom: 1rem;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .service-quantity {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            text-align: center;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .service-limit {
+            background: #e8f4fd;
+            color: #2c3e50;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 1rem;
+            font-weight: 500;
+            font-size: 0.8rem;
+            border: 1px solid #b3d9f2;
+        }
+
+        .service-guarantee {
+            color: #27ae60;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .service-note {
+            background: #fff3cd;
+            color: #856404;
+            padding: 0.5rem 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            text-align: center;
+            font-size: 0.8rem;
+            border: 1px solid #ffeaa7;
+        }
+
+        .service-price {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 15px;
+            text-align: center;
+            border: 2px solid #e9ecef;
+        }
+
+        .price-amount {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .price-currency {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+            color: #7f8c8d;
+        }
+
+        /* RTL/LTR support */
+        [dir="ltr"] .service-card {
+            text-align: left;
+        }
+
+        [dir="rtl"] .service-card {
+            text-align: right;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .language-toggle {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                padding: 0 10px;
+            }
+            
+            .service-card {
+                padding: 1.5rem;
+            }
+            
+            .platform-icon {
+                font-size: 2.5rem;
+            }
+            
+            .service-name {
+                font-size: 1.3rem;
+            }
+            
+            .price-amount {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .service-card {
+                padding: 1rem;
+            }
+            
+            .platform-icon {
+                font-size: 2rem;
+            }
+            
+            .service-name {
+                font-size: 1.2rem;
+            }
+
+            .contact-btn {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 20px;
+                font-size: 20px;
+            }
+
+            [dir="rtl"] .contact-btn {
+                right: auto;
+                left: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <h1 class="logo" data-ar="خدمات المتابعين" data-en="Follower Services">خدمات المتابعين</h1>
+                <div class="language-toggle">
+                    <button class="lang-btn active" data-lang="ar">
+                        <span>🌐</span>
+                        العربية
+                    </button>
+                    <button class="lang-btn" data-lang="en">
+                        <span>🌐</span>
+                        English
+                    </button>
+                    <button class="header-whatsapp-btn" onclick="openWhatsApp()">
+                        <span>💬</span>
+                        <span data-ar="تواصل معنا" data-en="Contact Us">تواصل معنا</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="sort-controls">
+                <h3 data-ar="ترتيب الخدمات" data-en="Sort Services">ترتيب الخدمات</h3>
+                <div class="sort-buttons">
+                    <button class="sort-btn active" data-sort="platform" data-ar="حسب المنصة" data-en="By Platform">حسب المنصة</button>
+                    <button class="sort-btn" data-sort="price-low" data-ar="السعر: من الأقل" data-en="Price: Low to High">السعر: من الأقل</button>
+                    <button class="sort-btn" data-sort="price-high" data-ar="السعر: من الأعلى" data-en="Price: High to Low">السعر: من الأعلى</button>
+                    <button class="sort-btn" data-sort="quantity" data-ar="الكمية" data-en="Quantity">الكمية</button>
+                </div>
+                <div class="platform-filter">
+                    <button class="platform-filter-btn active" data-platform="all" data-ar="جميع المنصات" data-en="All Platforms">جميع المنصات</button>
+                    <button class="platform-filter-btn" data-platform="TikTok" data-ar="تيك توك" data-en="TikTok">تيك توك</button>
+                    <button class="platform-filter-btn" data-platform="Instagram" data-ar="إنستغرام" data-en="Instagram">إنستغرام</button>
+                    <button class="platform-filter-btn" data-platform="Facebook" data-ar="فيسبوك" data-en="Facebook">فيسبوك</button>
+                    <button class="platform-filter-btn" data-platform="YouTube" data-ar="يوتيوب" data-en="YouTube">يوتيوب</button>
+                    <button class="platform-filter-btn" data-platform="Telegram" data-ar="تليجرام" data-en="Telegram">تليجرام</button>
+                </div>
+            </div>
+            <div class="services-grid" id="servicesGrid">
+                <!-- Services will be loaded here -->
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p data-ar="جميع الحقوق محفوظة © 2024" data-en="All rights reserved © 2024">جميع الحقوق محفوظة © 2024</p>
+        </div>
+    </footer>
+
+    <!-- Contact WhatsApp Button -->
+    <button class="contact-btn" onclick="openWhatsApp()" title="تواصل معنا | Contact Us">
+        💬
+    </button>
+
+    <script>
+        // Platform logo mapping
+        const platformLogos = {
+            'TikTok': 'tiktok.png',
+            'Instagram': 'instgram.jpg',
+            'Facebook': 'facebook.png',
+            'YouTube': 'youtube.png',
+            'Telegram': 'telegram.png'
+        };
+
+        // Embedded services data
+        const servicesData = [
+            {
+                "serviceName": "متابعين تيك توك",
+                "description": "خدمة سريعة",
+                "quantity": "1",
+                "quantityUnit": "ألف",
+                "speed": "يوم",
+                "guarantee": "ضمان شهر",
+                "price": "100",
+                "currency": "جنيه",
+                "platform": "TikTok"
+            },
+            {
+                "serviceName": "متابعين تيك توك",
+                "description": "ننصح بها",
+                "quantity": "50",
+                "quantityUnit": "ألف",
+                "speed": "يوم",
+                "guarantee": "ضمان شهر",
+                "price": "160",
+                "currency": "جنيه",
+                "platform": "TikTok",
+                "note": "عند عمل الطلب يجب أن تقوم بفتح بث مباشر حتى إكتمال الطلب"
+            },
+            {
+                "serviceName": "مشاهدات تيك توك",
+                "description": "بداية فورية",
+                "quantity": "1",
+                "quantityUnit": "مليون",
+                "speed": "يوم",
+                "guarantee": "ضمان شهرين",
+                "price": "20",
+                "currency": "جنيه",
+                "platform": "TikTok"
+            },
+            {
+                "serviceName": "إعجابات تيك توك",
+                "description": "جودة حقيقية",
+                "quantity": "30",
+                "quantityUnit": "ألف",
+                "speed": "يوم",
+                "guarantee": "مدي الحياة",
+                "price": "30",
+                "currency": "جنيه",
+                "platform": "TikTok"
+            },
+            {
+                "serviceName": "متابعين إنستغرام",
+                "description": "اكونتات مصرين",
+                "quantity": "1",
+                "quantityUnit": "ألف",
+                "speed": "يوم",
+                "guarantee": "ضمان شهر",
+                "price": "200",
+                "currency": "جنيه",
+                "platform": "Instagram"
+            },
+            {
+                "serviceName": "متابعين إنستغرام",
+                "description": "اكونتات ذكور مصرين",
+                "quantity": "5",
+                "quantityUnit": "ألف",
+                "speed": "يوم",
+                "guarantee": "ضمان شهر",
+                "price": "350",
+                "currency": "جنيه",
+                "platform": "Instagram"
+            },
+            {
+                "serviceName": "متابعين إنستغرام",
+                "description": "اكونتات اناث مصرين",
+                "quantity": "5",
+                "quantityUnit": "ألف",
+                "speed": "يوم",
+                "guarantee": "ضمان شهر",
+                "price": "350",
+                "currency": "جنيه",
+                "platform": "Instagram"
+            },
+            {
+                "serviceName": "إعجابات إنستغرام",
+                "description": "اكونتات مصرين",
+                "quantity": "1",
+                "quantityUnit": "ألف",
+                "speed": "يوم",
+                "guarantee": "ضمان شهر",
+                "price": "40",
+                "currency": "جنيه",
+                "platform": "Instagram"
+            },
+            {
+                "serviceName": "مشاهدات استوري إنستغرام",
+                "description": "اكونتات مصرين",
+                "quantity": "10",
+                "quantityUnit": "ألف",
+                "speed": "يوم",
+                "guarantee": "ضمان شهر",
+                "price": "50",
+                "currency": "جنيه",
+                "platform": "Instagram"
+            },
+            {
+                "serviceName": "تحقيق شرط متابعين فيسبوك",
+                "description": "سوف تحصل على 10 ألف متابع",
+                "quantity": "10",
+                "quantityUnit": "ألف",
+                "speed": "",
+                "guarantee": "مدي الحياة",
+                "price": "1100",
+                "currency": "جنيه",
+                "platform": "Facebook"
+            },
+            {
+                "serviceName": "تحقيق شرط متابعين فيسبوك",
+                "description": "سوف تحصل على 5 ألف متابع",
+                "quantity": "5",
+                "quantityUnit": "ألف",
+                "speed": "",
+                "guarantee": "مدي الحياة",
+                "price": "600",
+                "currency": "جنيه",
+                "platform": "Facebook"
+            },
+            {
+                "serviceName": "متابعين + إعجابات صفحة فيسبوك",
+                "description": "تقبل جميع الاشكال",
+                "quantity": "1",
+                "quantityUnit": "ألف",
+                "speed": "يوم",
+                "guarantee": "ضمان شهر",
+                "price": "120",
+                "currency": "جنيه",
+                "platform": "Facebook"
+            },
+            {
+                "serviceName": "متابعين فيسبوك بروفايل",
+                "description": "80-100% مصرين",
+                "quantity": "5",
+                "quantityUnit": "ألف",
+                "speed": "يوم",
+                "guarantee": "ضمان شهر",
+                "price": "150",
+                "currency": "جنيه",
+                "platform": "Facebook"
+            },
+            {
+                "serviceName": "أعضاء جروب فيسبوك",
+                "description": "عام وخاص | مصرين 70-100%",
+                "quantity": "1",
+                "quantityUnit": "ألف",
+                "speed": "يوم",
+                "guarantee": "ضمان شهر",
+                "price": "200",
+                "currency": "جنيه",
+                "platform": "Facebook"
+            },
+            {
+                "serviceName": "إعجابات فيسبوك",
+                "description": "مكس ❤️👍🥰 | 100% مصرية",
+                "quantity": "10",
+                "quantityUnit": "ألف",
+                "speed": "يوم",
+                "guarantee": "مدى الحياة",
+                "price": "200",
+                "currency": "جنيه",
+                "platform": "Facebook"
+            },
+            {
+                "serviceName": "أعضاء تليجرام",
+                "description": "قناة / مجموعة",
+                "quantity": "2",
+                "quantityUnit": "ألف",
+                "speed": "يوم",
+                "guarantee": "ضمان شهر",
+                "price": "70",
+                "currency": "جنيه",
+                "platform": "Telegram"
+            },
+            {
+                "serviceName": "مشتركين يوتيوب",
+                "description": "جوده عالية",
+                "quantity": "1",
+                "quantityUnit": "ألف",
+                "speed": "يوم",
+                "guarantee": "ضمان 30 يوم",
+                "price": "700",
+                "currency": "جنيه",
+                "platform": "YouTube"
+            },
+            {
+                "serviceName": "مشتركين يوتيوب",
+                "description": "جودة منخفضة",
+                "quantity": "50",
+                "quantityUnit": "ألف",
+                "speed": "يوم",
+                "guarantee": "بدون ضمان",
+                "price": "100",
+                "currency": "جنيه",
+                "platform": "YouTube"
+            },
+            {
+                "serviceName": "مشاهدات يوتيوب",
+                "description": "أكثر استقرارا",
+                "quantity": "5",
+                "quantityUnit": "ألف",
+                "speed": "يوم",
+                "guarantee": "مدى الحياة",
+                "price": "100",
+                "currency": "جنيه",
+                "platform": "YouTube"
+            }
+        ];
+
+        // Language configuration
+        const languages = {
+            ar: {
+                currency: 'جنيه',
+                loading: 'جاري التحميل...',
+                error: 'حدث خطأ في تحميل البيانات'
+            },
+            en: {
+                currency: 'EGP',
+                loading: 'Loading...',
+                error: 'Error loading data'
+            }
+        };
+
+        let currentLanguage = 'ar';
+        let currentSort = 'platform';
+        let currentFilter = 'all';
+        let filteredAndSortedData = [...servicesData];
+
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeLanguageToggle();
+            initializeSortingAndFiltering();
+            renderServices();
+        });
+
+        // Language toggle functionality
+        function initializeLanguageToggle() {
+            const langButtons = document.querySelectorAll('.lang-btn');
+            
+            langButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const lang = this.dataset.lang;
+                    if (lang !== currentLanguage) {
+                        switchLanguage(lang);
+                    }
+                });
+            });
+        }
+
+        // Switch language
+        function switchLanguage(lang) {
+            currentLanguage = lang;
+            
+            // Update HTML direction
+            document.documentElement.lang = lang;
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            
+            // Update active button
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+            
+            // Update all translatable elements
+            updateTranslatableElements();
+            
+            // Re-render services with new language
+            renderServices();
+        }
+
+        // Update translatable elements
+        function updateTranslatableElements() {
+            document.querySelectorAll('[data-ar][data-en]').forEach(element => {
+                element.textContent = languages[currentLanguage][element.dataset[currentLanguage === 'ar' ? 'ar' : 'en']] || element.textContent;
+            });
+        }
+
+        // Initialize sorting and filtering
+        function initializeSortingAndFiltering() {
+            // Sort buttons
+            document.querySelectorAll('.sort-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const sortType = this.dataset.sort;
+                    if (sortType !== currentSort) {
+                        currentSort = sortType;
+                        updateSortButtons();
+                        applySortAndFilter();
+                    }
+                });
+            });
+
+            // Platform filter buttons
+            document.querySelectorAll('.platform-filter-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const platform = this.dataset.platform;
+                    if (platform !== currentFilter) {
+                        currentFilter = platform;
+                        updateFilterButtons();
+                        applySortAndFilter();
+                    }
+                });
+            });
+        }
+
+        // Update sort button states
+        function updateSortButtons() {
+            document.querySelectorAll('.sort-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.sort === currentSort);
+            });
+        }
+
+        // Update filter button states
+        function updateFilterButtons() {
+            document.querySelectorAll('.platform-filter-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.platform === currentFilter);
+            });
+        }
+
+        // Apply sorting and filtering
+        function applySortAndFilter() {
+            // First filter
+            let filtered = servicesData;
+            if (currentFilter !== 'all') {
+                filtered = servicesData.filter(service => service.platform === currentFilter);
+            }
+
+            // Then sort
+            let sorted = [...filtered];
+            switch (currentSort) {
+                case 'platform':
+                    sorted.sort((a, b) => a.platform.localeCompare(b.platform));
+                    break;
+                case 'price-low':
+                    sorted.sort((a, b) => parseInt(a.price) - parseInt(b.price));
+                    break;
+                case 'price-high':
+                    sorted.sort((a, b) => parseInt(b.price) - parseInt(a.price));
+                    break;
+                case 'quantity':
+                    sorted.sort((a, b) => parseInt(a.quantity) - parseInt(b.quantity));
+                    break;
+            }
+
+            filteredAndSortedData = sorted;
+            renderServices();
+        }
+
+        // Render services
+        function renderServices() {
+            const grid = document.getElementById('servicesGrid');
+            
+            if (!filteredAndSortedData.length) {
+                grid.innerHTML = `<div class="error">${languages[currentLanguage].error}</div>`;
+                return;
+            }
+            
+            grid.innerHTML = filteredAndSortedData.map(service => createServiceCard(service)).join('');
+        }
+
+        // Create service card HTML
+        function createServiceCard(service) {
+            const serviceName = getTranslatedServiceName(service);
+            const description = getTranslatedDescription(service);
+            const quantity = getTranslatedQuantity(service);
+            const limit = getTranslatedLimit(service);
+            const guarantee = getTranslatedGuarantee(service);
+            const price = getTranslatedPrice(service);
+            const platformLogo = platformLogos[service.platform] || 'default.png';
+            
+            let noteHtml = '';
+            if (service.note) {
+                noteHtml = `<div class="service-note">${service.note}</div>`;
+            }
+            
+            return `
+                <div class="service-card">
+                    <img src="${platformLogo}" alt="${service.platform}" class="platform-icon" onerror="this.style.display='none'">
+                    <h3 class="service-name">${serviceName}</h3>
+                    <p class="service-description">${description}</p>
+                    <div class="service-quantity">${quantity}</div>
+                    <div class="service-limit">${limit}</div>
+                    <div class="service-guarantee">${guarantee}</div>
+                    ${noteHtml}
+                    <div class="service-price">
+                        <div class="price-amount">${price}</div>
+                        <div class="price-currency">${currentLanguage === 'ar' ? 'جنيه لكل 1000' : 'EGP per 1000'}</div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Get translated service name
+        function getTranslatedServiceName(service) {
+            if (currentLanguage === 'ar') {
+                return service.serviceName;
+            }
+            
+            // Translate to English
+            const translations = {
+                'متابعين تيك توك': 'TikTok Followers',
+                'مشاهدات تيك توك': 'TikTok Views',
+                'إعجابات تيك توك': 'TikTok Likes',
+                'متابعين إنستغرام': 'Instagram Followers',
+                'إعجابات إنستغرام': 'Instagram Likes',
+                'مشاهدات استوري إنستغرام': 'Instagram Story Views',
+                'متابعين فيسبوك': 'Facebook Followers',
+                'إعجابات فيسبوك': 'Facebook Likes',
+                'متابعين صفحة فيسبوك': 'Facebook Page Followers',
+                'متابعين فيسبوك بروفايل': 'Facebook Profile Followers',
+                'أعضاء جروب فيسبوك': 'Facebook Group Members',
+                'مشتركين يوتيوب': 'YouTube Subscribers',
+                'مشاهدات يوتيوب': 'YouTube Views',
+                'أعضاء تليجرام': 'Telegram Members'
+            };
+            
+            return translations[service.serviceName] || service.serviceName;
+        }
+
+        // Get translated description
+        function getTranslatedDescription(service) {
+            if (currentLanguage === 'ar') {
+                return service.description;
+            }
+            
+            // Simple translations for common descriptions
+            const translations = {
+                'خدمة سريعة': 'Fast Service',
+                'ننصح بها': 'Recommended',
+                'بداية فورية': 'Instant Start',
+                'جودة حقيقية': 'Real Quality',
+                'اكونتات مصرين': 'Egyptian Accounts',
+                'اكونتات ذكور مصرين': 'Egyptian Male Accounts',
+                'اكونتات اناث مصرين': 'Egyptian Female Accounts',
+                'تقبل جميع الاشكال': 'All Types Accepted',
+                '80-100% مصرين': '80-100% Egyptian',
+                'مصرين 70-100%': '70-100% Egyptian',
+                '100% مصرية': '100% Egyptian',
+                'قناة / مجموعة': 'Channel / Group',
+                'جوده عالية': 'High Quality',
+                'جودة منخفضة': 'Low Quality',
+                'أكثر استقرارا': 'More Stable'
+            };
+            
+            return translations[service.description] || service.description;
+        }
+
+        // Get translated quantity
+        function getTranslatedQuantity(service) {
+            if (currentLanguage === 'ar') {
+                const speed = service.speed ? `/${service.speed}` : '';
+                return `${service.quantity} ${service.quantityUnit || ''}${speed}`;
+            }
+            
+            let unit = '';
+            if (service.quantityUnit === 'ألف' || service.quantityUnit === 'thousand') {
+                unit = 'K';
+            } else if (service.quantityUnit === 'مليون' || service.quantityUnit === 'million') {
+                unit = 'M';
+            }
+            
+            const speed = service.speed ? '/day' : '';
+            return `${service.quantity}${unit}${speed}`;
+        }
+
+        // Get translated limit text
+        function getTranslatedLimit(service) {
+            if (currentLanguage === 'ar') {
+                return `الحد الأقصى: ${service.quantity} ${service.quantityUnit || ''}`;
+            }
+            
+            let unit = '';
+            if (service.quantityUnit === 'ألف' || service.quantityUnit === 'thousand') {
+                unit = 'K';
+            } else if (service.quantityUnit === 'مليون' || service.quantityUnit === 'million') {
+                unit = 'M';
+            }
+            
+            return `Limit: ${service.quantity}${unit}`;
+        }
+
+        // Calculate price per 1000
+        function calculatePricePer1000(service) {
+            const totalPrice = parseInt(service.price);
+            let totalQuantity = parseInt(service.quantity);
+            
+            // Convert to thousands if needed
+            if (service.quantityUnit === 'مليون' || service.quantityUnit === 'million') {
+                totalQuantity = totalQuantity * 1000; // Convert million to thousands
+            }
+            
+            // Calculate price per 1000
+            const pricePer1000 = totalPrice / totalQuantity;
+            return Math.round(pricePer1000 * 100) / 100; // Round to 2 decimal places
+        }
+
+        // Get translated guarantee
+        function getTranslatedGuarantee(service) {
+            if (currentLanguage === 'ar') {
+                return service.guarantee;
+            }
+            
+            const translations = {
+                'ضمان شهر': '1 Month Guarantee',
+                'ضمان شهرين': '2 Months Guarantee',
+                'مدي الحياة': 'Lifetime Guarantee'
+            };
+            
+            return translations[service.guarantee] || service.guarantee;
+        }
+
+        // Get translated price
+        function getTranslatedPrice(service) {
+            return service.price;
+        }
+
+        // Open WhatsApp function
+        function openWhatsApp() {
+            const phoneNumber = '201026639098'; // Egypt country code +20 + phone number
+            const message = currentLanguage === 'ar' 
+                ? 'مرحبا! أريد الاستفسار عن خدماتكم' 
+                : 'Hello! I want to inquire about your services';
+            
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
+</body>
+</html>
